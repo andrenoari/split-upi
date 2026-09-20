@@ -1,0 +1,24 @@
+{
+  "name": "kind-chandrasekhar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "add_translations.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrenoari/kind-chandrasekhar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/andrenoari/kind-chandrasekhar/issues"
+  },
+  "homepage": "https://github.com/andrenoari/kind-chandrasekhar#readme",
+  "dependencies": {
+    "puppeteer": "^25.11.0"
+  }
+}

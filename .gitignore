@@ -6,3 +6,4 @@ append_js.js
 patch_translations.js
 update_html.js
 update_translations.js
+node_modules/
