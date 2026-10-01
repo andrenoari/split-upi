@@ -229,27 +229,6 @@
       </div>
     </main>
 
-    <!-- ================= SCREEN: SETTINGS ================= -->
-    <main id="screen-settings" class="screen hidden">
-      <h2 style="margin-bottom: 8px;" data-t="settingsTitle">Settings</h2>
-      <p style="color: var(--text-muted); margin-bottom: 24px;" data-t="settingsSub">Manage app preferences.</p>
-      
-      <div style="background: var(--surface, #fff); border-radius: var(--radius-md); border: 1px solid var(--border-color); padding: 16px;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <div style="padding-right: 16px;">
-            <div style="font-weight: 600; font-size: 1.05rem; color: var(--text-main);" data-t="settingSplitToggle">Enable UPI Splitting</div>
-            <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;" data-t="settingSplitDesc">When disabled, this acts as a normal expense tracker without splitting payments into chunks.</div>
-          </div>
-          <div>
-            <label class="toggle-switch">
-              <input type="checkbox" id="setting-split-toggle" checked>
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </main>
-
     <!-- BOTTOM NAVIGATION -->
     <nav class="bottom-nav">
       <button class="nav-item active" id="nav-home">
@@ -259,10 +238,6 @@
       <button class="nav-item" id="nav-history">
         <i data-lucide="clock-3"></i>
         <span data-t="navHistory">History</span>
-      </button>
-      <button class="nav-item" id="nav-settings">
-        <i data-lucide="settings"></i>
-        <span data-t="navSettings">Settings</span>
       </button>
     </nav>
 
