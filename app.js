@@ -371,6 +371,7 @@ let state = {
   totalPaise: 0,
   chunks: [],
   paidCount: 0,
+  isSplitEnabled: localStorage.getItem('upi_split_enabled') !== 'false'
 };
 
 const inrFormat = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 2 });
@@ -387,6 +388,8 @@ function calculateMDR(totalPaise) {
 }
 
 function splitAmount(totalPaise, capPaise) {
+  if (!state.isSplitEnabled) return [totalPaise]; // Bypass splitting if disabled
+  
   const n = Math.max(1, Math.ceil(totalPaise / capPaise));
   if (n === 1) return [totalPaise];
   const base = Math.floor(totalPaise / n / 100) * 100;
@@ -815,16 +818,34 @@ document.getElementById('btn-start-over').addEventListener('click', () => {
 // HISTORY & NAVIGATION
 // ==========================================
 document.getElementById('nav-home').addEventListener('click', () => {
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
   document.getElementById('nav-home').classList.add('active');
-  document.getElementById('nav-history').classList.remove('active');
   showScreen('screen-home');
 });
 
 document.getElementById('nav-history').addEventListener('click', () => {
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
   document.getElementById('nav-history').classList.add('active');
-  document.getElementById('nav-home').classList.remove('active');
   renderHistory();
   showScreen('screen-history');
+});
+
+document.getElementById('nav-settings').addEventListener('click', () => {
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  document.getElementById('nav-settings').classList.add('active');
+  
+  // Sync toggle state with UI
+  const splitToggle = document.getElementById('setting-split-toggle');
+  if (splitToggle) {
+    splitToggle.checked = state.isSplitEnabled;
+  }
+  
+  showScreen('screen-settings');
+});
+
+document.getElementById('setting-split-toggle')?.addEventListener('change', (e) => {
+  state.isSplitEnabled = e.target.checked;
+  localStorage.setItem('upi_split_enabled', state.isSplitEnabled);
 });
 
 function saveTransaction() {
